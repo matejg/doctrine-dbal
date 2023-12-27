@@ -50,7 +50,7 @@ class ProfilerLogger extends AbstractLogger
 			[$sql, $params, $types] = $this->expandListParameters($sql, $params, $types ?? []);
 
 			// Escape % before vsprintf (example: LIKE '%ant%')
-			$sql = str_replace(['%', '?'], ['%%', '%s'], $sql);
+			$sql = str_replace(['??', '%', '?', '#qq#'], ['#qq#', '%%', '%s', '??'], $sql);
 
 			$query = vsprintf(
 				$sql,
